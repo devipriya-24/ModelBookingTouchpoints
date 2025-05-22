@@ -25,6 +25,7 @@ public class Model13190definition {
 	}
 	catch(Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
         }  
 
@@ -37,11 +38,11 @@ public class Model13190definition {
 			
 			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "model13190.png").similar(0.7), 10).click();
 			//CommonMethods.screen.wheel(1, 3);
-            Thread.sleep(1000);
+       
           //  CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
             //CommonMethods.draganddrop();
-            Thread.sleep(3000);
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reportfilters.png").similar(0.7), 10).doubleClick();
+            Thread.sleep(5000);
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "rep.png").similar(0.7), 10).doubleClick();
             
             
             
@@ -67,6 +68,7 @@ public class Model13190definition {
                         
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("Step failed: " + e.getMessage(), e);
         }
 	
 		
@@ -77,11 +79,18 @@ public class Model13190definition {
 		 try {
 		    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13190.png").similar(0.7), 10).doubleClick();
 	            //screen.mouseMove(100);
-		    	CommonMethods.screen.wheel(1, 2);
+		    	//CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+				//CommonMethods.screen.wheel(1, 3);
+		    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+		    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+		    	CommonMethods.screen.wheel(1,3);
+		    	//CommonMethods.screen.wheel(1, 2);
+		    	String dir9 = CommonMethods.getCredential("Directory9");
+				CommonMethods. generatereport(dir9);
 	            
-	            CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13190\\To_Be_Processed");
+	           // CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13190\\To_Be_Processed");
 		    }catch(Exception e) {
-		    	
+		    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 		    }
 	}
 	
@@ -122,10 +131,16 @@ public class Model13190definition {
 			}
 			
 			
-			CommonMethods.screen.wheel(1, 3);
-	       CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13190BRN11\\To_Be_Processed");
+			//CommonMethods.screen.wheel(1, 3);
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wheel(1,3);
+			String dir10 = CommonMethods.getCredential("Directory10");
+			CommonMethods. generatereport(dir10);
+	      
 	    }catch(Exception e) {
 	    e.printStackTrace();	
+	    throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 	}
 

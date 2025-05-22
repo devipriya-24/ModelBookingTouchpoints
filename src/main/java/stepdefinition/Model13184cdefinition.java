@@ -1,14 +1,6 @@
 package stepdefinition;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.sikuli.script.App;
-import org.sikuli.script.Button;
-import org.sikuli.script.Key;
 import org.sikuli.script.Pattern;
-import org.sikuli.script.Region;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 //import io.cucumber.java.en.When;
@@ -24,6 +16,7 @@ public class Model13184cdefinition {
 			CommonMethods.enterusernameandpassword(username9, password9);
 	}catch(Exception e) {
 		e.printStackTrace();
+		throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
 	        
 	}
@@ -37,29 +30,22 @@ public class Model13184cdefinition {
 			CommonMethods.screen.type("Model Booking");
 			
 			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "model13190.png").similar(0.7), 10).click();
-			Thread.sleep(1000);
-			
-			
-			//CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "search13190.png").similar(0.7), 10).click();
-			//CommonMethods.screen.type("Model Booking");
-	    	//CommonMethods.screen.wheel(1, 2);
+			Thread.sleep(1000);	    	
+	         CommonMethods.draganddrop1();
+	         CommonMethods.screen.wheel(1, 2);
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			CommonMethods.screen.wheel(1, 3);
+	    	String dir17 = CommonMethods.getCredential("Directory17");
+			CommonMethods. generatereport(dir17);
 	    	
-	    	//draganddrop
-	    	
-	    	CommonMethods.draganddrop1();
-	    	
-            
+	    	//CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13184c\\To_Be_Processed");
             //generatereport("D:\\Ikyam\\Development\\BAJAJ\\13184c\\To_Be_Processed");
 	    }catch(Exception e) {
 	    	e.printStackTrace();
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
-		finally {
-			
-			CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13184c\\To_Be_Processed");
-		}
+		
 	}
-	
-
-	
 
 }

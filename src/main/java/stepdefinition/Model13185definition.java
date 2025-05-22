@@ -10,37 +10,40 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utility.CommonMethods;
 
-public class Model13594definition {
+public class Model13185definition {
 	
-	@When("user logging in using username {string} and password {string}")
-	public void user_logging_in_using_username_and_password(String username7, String password7) {
+	@Given("user log in using username {string} and password {string}")
+	public void user_log_in_using_username_and_password(String username2, String password2) {
 		try {
-			CommonMethods.enterusernameandpassword(username7, password7);
-	        
-	}
+			CommonMethods.enterusernameandpassword(username2, password2);
+		}
 	catch(Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
 	}
-	@Then("user must click the branch")
-	public void user_must_click_the_branch() {
+	@Then("user should click the branch")
+	public void user_should_click_the_branch() {
 		try {
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "sales.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reports.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Msales.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelstmt.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wheel(1, 3);
-            Thread.sleep(1000);
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
-            
-            Thread.sleep(3000);
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reportfilters.png").similar(0.7), 10).doubleClick();
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "search13190.png").similar(0.7), 10).click();
+			CommonMethods.screen.type("Model Booking");
+			
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "model13190.png").similar(0.7), 10).click();
+			Thread.sleep(1000);
+			
+			
             
             CommonMethods.draganddrop();
+            
+            Thread.sleep(3000);
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "rep.png").similar(0.7), 10).doubleClick();
+            
+            
             
             Pattern reportFiltersPattern = new Pattern(CommonMethods.TEMP_DIR +"crop_rep.png").similar(0.90);
             Match arrowMatch = CommonMethods.screen.wait(reportFiltersPattern, 10);
@@ -64,27 +67,31 @@ public class Model13594definition {
                         
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("Step failed: " + e.getMessage(), e);
         }
 	}
-	@Then("users selects the branch as {int} generate the report")
-	public void users_selects_the_branch_as_generate_the_report(Integer int1) {
+	@Then("users select the branch as {int} generate the report")
+	public void users_select_the_branch_as_generate_the_report(Integer int1) {
 		try {
-	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13594.png").similar(0.7), 10).doubleClick();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13185.png").similar(0.7), 10).doubleClick();
             //screen.mouseMove(100);
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
 	    	CommonMethods.screen.wheel(1, 2);
-            
-	    	CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13594\\To_Be_Processed");
-	    }catch(Exception e) {
 	    	
+	    	String dir5 = CommonMethods.getCredential("Directory5");
+			CommonMethods. generatereport(dir5);
+            
+	    	//CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13185\\To_Be_Processed");
+	    }catch(Exception e) {
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 	}
 	
-
-	
-	@Then("I clicking the branch as A13594 make the report")
-	public void i_clicking_the_branch_as_a13594_make_the_report() {
-		try {
-	        String targetText = "A13594";
+	@Then("users select the branch as A {int} click the report")       //A13185
+	public void users_select_the_branch_as_a_click_the_report(Integer int1) {
+try {
+	        String targetText = "A13185";
 			boolean entryFound = false;
 			int maxScrollAttempts = 50;
 			int attempts = 0;
@@ -116,24 +123,25 @@ public class Model13594definition {
 			if (!entryFound) {
 			    System.out.println("Target text '" + targetText + "' not found after scrolling.");
 			}
-			
-			
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
 			CommonMethods.screen.wheel(1, 3);
-	        CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\A13594\\To_Be_Processed");
+			String dir6 = CommonMethods.getCredential("Directory6");
+			CommonMethods. generatereport(dir6);
+	        //CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\A13185\\To_Be_Processed");
 	    }catch(Exception e) {
 	    e.printStackTrace();	
+	    throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 	}
-
 	
-
-	@Then("customer clicks the branch as B13594 get the report")
-	public void customer_clicks_the_branch_as_b13594_get_the_report() {
+	@Then("users select the branch as B {int} click the report")  //B13185
+	public void users_select_the_branch_as_b_click_the_report(Integer int1) {
 try {
 			
 			
 			//to select the branch B13184
-			String targetText = "B13594";
+			String targetText = "B13185";
 			boolean entryFound = false;
 			int maxScrollAttempts = 50;
 			int attempts = 0;
@@ -164,22 +172,22 @@ try {
 
 			if (!entryFound) {
 			    System.out.println("Target text '" + targetText + "' not found after scrolling.");
-			}		
+			}	
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			//CommonMethods.screen.wheel(1, 3);
 			CommonMethods.screen.wheel(1, 3);
             
-            CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\B13594\\To_Be_Processed");
+			String dir7 = CommonMethods.getCredential("Directory7");
+			CommonMethods. generatereport(dir7);
+			
+           // CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\B13185\\To_Be_Processed");
 	    }catch(Exception e) {
-	    	
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 		
 	    
 	}
+	
 	}
-
-
-
-
-
-
-
 

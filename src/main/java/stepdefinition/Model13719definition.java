@@ -25,6 +25,7 @@ public class Model13719definition {
 	}
 	catch(Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
 	}
 	@Then("user select the branch")
@@ -37,28 +38,34 @@ public class Model13719definition {
 			//CommonMethods.screen.wheel(1, 3);
             Thread.sleep(1000);
          
-            CommonMethods.draganddrop();
-            Thread.sleep(3000);
+            CommonMethods.draganddrop1();
+            Thread.sleep(2000);
            
             
-            //click the branch and select the branch
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Model_branch.png").similar(0.7), 10).click();
+           
            
                         
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("Step failed: " + e.getMessage(), e);
         }
 	}
 	@Then("user entered the branch as13719 and makes the report")
 	public void user_entered_the_branch_as13719_and_makes_the_report() {
 		try {
+			 //click the branch and select the branch
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Model_branch.png").similar(0.7), 10).click();
 	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13719.png").similar(0.7), 10).doubleClick();
             //screen.mouseMove(100);
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
 	    	CommonMethods.screen.wheel(1, 2);
-            
-           CommonMethods. generatereport("D:\\Ikyam\\Development\\BAJAJ\\13719\\To_Be_Processed");
+	    	String dir18 = CommonMethods.getCredential("Directory18");
+			CommonMethods. generatereport(dir18);
+			
+           //CommonMethods. generatereport("D:\\Ikyam\\Development\\BAJAJ\\13719\\To_Be_Processed");
 	    }catch(Exception e) {
-	    	
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 	}
 

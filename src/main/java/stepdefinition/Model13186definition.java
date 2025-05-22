@@ -23,23 +23,32 @@ public class Model13186definition {
 	        CommonMethods.enterusernameandpassword(username3, password3);
 	}
 	catch(Exception e) {
-			e.printStackTrace();
+		e.printStackTrace();
+		throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
 	   
 	}
 	@Then("users should click the branch")
 	public void users_should_click_the_branch() {
 		try {
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "sales.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reports.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Msales.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelstmt.png").similar(0.7), 10).doubleClick();
-			CommonMethods.screen.wheel(1, 3);
-            Thread.sleep(1000);
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
+			//CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "sales.png").similar(0.7), 10).doubleClick();
+			//CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reports.png").similar(0.7), 10).doubleClick();
+			//CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Msales.png").similar(0.7), 10).doubleClick();
+			//CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "stmt.png").similar(0.7), 10).doubleClick();
+			//CommonMethods.screen.wheel(1, 3);
+           // Thread.sleep(1000);
+           // CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
             
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "search13190.png").similar(0.7), 10).click();
+			CommonMethods.screen.type("Model Booking");
+			
+			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "model13190.png").similar(0.7), 10).click();
+			Thread.sleep(1000);
+			
             Thread.sleep(3000);
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reportfilters.png").similar(0.7), 10).doubleClick();
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "rep.png").similar(0.7), 10).doubleClick();
+            Thread.sleep(3000);
+            //CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reportfilters.png").similar(0.7), 10).doubleClick();
             
             
             
@@ -66,6 +75,7 @@ public class Model13186definition {
                         
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("Step failed: " + e.getMessage(), e);
         }
 	}
 	@Then("user select the branch as {int} create the report")
@@ -74,11 +84,17 @@ public class Model13186definition {
 		 try {
 		    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13186.png").similar(0.7), 10).doubleClick();
 	            //screen.mouseMove(100);
-		    	CommonMethods.screen.wheel(1, 2);
-	            
-	            CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13186\\To_Be_Processed");
-		    }catch(Exception e) {
+		    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+		    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+				CommonMethods.screen.wheel(1, 3);
 		    	
+	            
+		    	String dir8 = CommonMethods.getCredential("Directory8");
+				CommonMethods. generatereport(dir8);
+	            //CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13186\\To_Be_Processed");
+		    }catch(Exception e) {
+		    	e.printStackTrace();
+		    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 		    }
 		}
 	

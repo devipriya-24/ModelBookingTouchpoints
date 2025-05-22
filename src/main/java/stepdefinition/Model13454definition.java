@@ -25,6 +25,7 @@ public class Model13454definition {
 	}
 	catch(Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
 	}
 	
@@ -39,35 +40,17 @@ public class Model13454definition {
 			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "model13190.png").similar(0.7), 10).click();
 			//CommonMethods.screen.wheel(1, 3);
             Thread.sleep(1000);
-          //  CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
+           CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
             CommonMethods.draganddrop1();
             Thread.sleep(3000);
-           // CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reportfilters.png").similar(0.7), 10).doubleClick();
-            
-            
-            
-            //Pattern reportFiltersPattern = new Pattern(CommonMethods.TEMP_DIR +"crop_rep.png").similar(0.90);
-            //Match arrowMatch = CommonMethods.screen.wait(reportFiltersPattern, 10);
-
-            //if (arrowMatch != null) {
-            	//CommonMethods.screen.hover(arrowMatch);
-               // Thread.sleep(500);
-                
-               // screen.doubleClick(arrowMatch);
-                //CommonMethods.screen.mouseMove(arrowMatch);
-               // CommonMethods.screen.mouseDown(Button.LEFT);
-               // Thread.sleep(200);
-               // CommonMethods.screen.mouseUp(Button.LEFT);	                
-           // } else {
-               // System.out.println("Report Filters arrow not found!");
-            //}
-            
+          
             //click the branch and select the branch
             CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Model_branch.png").similar(0.7), 10).click();
            
                         
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("Step failed: " + e.getMessage(), e);
         }                                         
 	
 	}
@@ -78,11 +61,15 @@ try {
 			
 	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13454.png").similar(0.7), 10).doubleClick();
             //screen.mouseMove(100);
-	    	CommonMethods.screen.wheel(1, 2);
-            
-           CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13454\\To_Be_Processed");
+	    	//CommonMethods.screen.wheel(1, 2);
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wheel(1,3);
+	    	String dir16 = CommonMethods.getCredential("Directory16");
+			CommonMethods. generatereport(dir16);
+          // CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13454\\To_Be_Processed");
 	    }catch(Exception e) {
-	    	
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 	}
 

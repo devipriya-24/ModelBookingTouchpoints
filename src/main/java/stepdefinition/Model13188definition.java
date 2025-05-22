@@ -14,22 +14,23 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utility.CommonMethods;
 
-public class Model13186cdefinition {
+public class Model13188definition {
 	
 
-	@When("user enter name of user as {string} and password as {string}")
-	public void user_enter_name_of_user_as_and_password_as(String username13, String password13) {
+	@When("user enter13188 username {string} and password {string}")
+	public void user_enter13188_username_and_password(String username6, String password6) {
 		try {
-			CommonMethods.enterusernameandpassword(username13, password13);
+			CommonMethods.enterusernameandpassword(username6, password6);
 	        
 	}
 	catch(Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	}
 	    
 	}
-	@When("user must select the name of branch")
-	public void user_must_select_the_name_of_branch() {
+	@Then("user clicks the13188 branch")
+	public void user_clicks_the13188_branch() {
 		try {
 			CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "search13190.png").similar(0.7), 10).click();
 			CommonMethods.screen.type("Model Booking");
@@ -38,10 +39,10 @@ public class Model13186cdefinition {
 			//CommonMethods.screen.wheel(1, 3);
             Thread.sleep(1000);
           //  CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "modelbookingstmt.png").similar(0.7), 10).doubleClick();
+            CommonMethods.draganddrop();
             
-            CommonMethods.draganddrop1();
             Thread.sleep(3000);
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "reportfilters.png").similar(0.7), 10).doubleClick();
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "rep.png").similar(0.7), 10).doubleClick();
             
             
             
@@ -62,28 +63,33 @@ public class Model13186cdefinition {
             }
             
             //click the branch and select the branch
-            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "branch13190.png").similar(0.7), 10).click();
+            CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Model_branch.png").similar(0.7), 10).click();
            
                         
         } catch (Exception e) {
             e.printStackTrace();
-        }
+            throw new RuntimeException("Step failed: " + e.getMessage(), e);
+        }                                         
 	
+	    
 	}
-	@Then("user try to scroll the branch as13186c and makes the report")
-	public void user_try_to_scroll_the_branch_as13186c_and_makes_the_report() {
+	@Then("user choose the branch as13188 makes the report")
+	public void user_choose_the_branch_as13188_makes_the_report() {
 		try {
-	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13186c.png").similar(0.7), 10).doubleClick();
-	    	CommonMethods.screen.mouseMove(100);
-	    	CommonMethods.screen.wheel(1, 5);
-            
-           CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13186c\\To_Be_Processed");
-	    }catch(Exception e) {
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "Dada13188.png").similar(0.7), 10).doubleClick();
+            //screen.mouseMove(100);
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			CommonMethods.screen.wheel(1, 3);
+	    	//CommonMethods.screen.wheel(1, 3);
 	    	
+	    	String dir12 = CommonMethods.getCredential("Directory12");
+			CommonMethods. generatereport(dir12);
+            
+            //CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13188\\To_Be_Processed");
+	    }catch(Exception e) {
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    }
 	}
-
 	
-
-
 }

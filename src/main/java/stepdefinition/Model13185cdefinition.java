@@ -21,6 +21,8 @@ public class Model13185cdefinition {
 	    	
 	    	CommonMethods.enterusernameandpassword( username11, password11 );
 	    }catch(Exception e) {
+	    	e.printStackTrace();
+			throw new RuntimeException("Step failed: " + e.getMessage(), e);
 	    	
 	    }
 	}
@@ -44,20 +46,31 @@ try {
 	    	CommonMethods.screen.wheel(1, 2);
 	    	CommonMethods.draganddrop1();
 	    	
-            
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+			CommonMethods.screen.wheel(1, 3);
+	    	
             //generatereport("D:\\Ikyam\\Development\\BAJAJ\\13184c\\To_Be_Processed");
 	    }catch(Exception e) {
 	    	e.printStackTrace();
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
+	    	
 	    }
 		
 	}
 	@Then("user scroll the branch as13185c and makes the report")
 	public void user_scroll_the_branch_as13185c_and_makes_the_report() {
 	    try {
-	    	CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13185c\\To_Be_Processed");
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	CommonMethods.screen.wait(new Pattern(CommonMethods.TEMP_DIR + "downarrow.png").similar(0.7), 10).click();
+	    	String dir19 = CommonMethods.getCredential("Directory19");
+			CommonMethods. generatereport(dir19);
+	    	//CommonMethods.generatereport("D:\\Ikyam\\Development\\BAJAJ\\13185c\\To_Be_Processed");
 	    	
 	    }catch(Exception e) {
 	    	e.printStackTrace();
+	    	throw new RuntimeException("Step failed: " + e.getMessage(), e);
+	    	
 	    }
 	}
 	
